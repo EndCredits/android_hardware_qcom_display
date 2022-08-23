@@ -72,16 +72,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.hw=0 \
     debug.egl.hw=0 \
     debug.sf.latch_unsignaled=1 \
-    debug.sf.high_fps_late_app_phase_offset_ns=1000000 \
     debug.mdpcomp.logs=0 \
     vendor.gralloc.disable_ubwc=0 \
-    vendor.display.disable_scaler=0 \
+    vendor.display.disable_scaler=1 \
     vendor.display.disable_excl_rect=0 \
     vendor.display.disable_excl_rect_partial_fb=1 \
     vendor.display.comp_mask=0 \
     vendor.display.enable_posted_start_dyn=1 \
     vendor.display.enable_optimize_refresh=1 \
-    vendor.display.use_smooth_motion=1 \
+    vendor.display.use_smooth_motion=0 \
     vendor.display.enable_camera_smooth=1 \
     vendor.display.enable_allow_idle_fallback=1 \
     vendor.display.disable_idle_time_video=1 \
@@ -121,13 +120,13 @@ endif
 
 ifeq ($(TARGET_BOARD_PLATFORM),lito)
 PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.high_fps_late_sf_phase_offset_ns=-4000000 \
-    debug.sf.high_fps_early_phase_offset_ns=-4000000 \
-    debug.sf.high_fps_early_gl_phase_offset_ns=-4000000 \
-    debug.sf.perf_fps_late_sf_phase_offset_ns=-5000000 \
-    debug.sf.perf_fps_early_phase_offset_ns=-5000000 \
-    debug.sf.perf_fps_early_gl_phase_offset_ns=-5000000 \
-    debug.sf.enable_advanced_sf_phase_offset=1
+    debug.sf.use_phase_offsets_as_durations=1 \
+    debug.sf.late.sf.duration=10500000 \
+    debug.sf.late.app.duration=20500000 \
+    debug.sf.early.sf.duration=16000000 \
+    debug.sf.early.app.duration=16500000 \
+    debug.sf.earlyGl.sf.duration=13500000 \
+    debug.sf.earlyGl.app.duration=21000000
 endif
 
 ifeq ($(TARGET_FWK_SUPPORTS_FULL_VALUEADDS), true)
